@@ -8,38 +8,34 @@ class User < ApplicationRecord
   validates :username, 
     uniqueness: true,
     length: { in: 3..30 },
-    format: { with: URI::MailTo::EMAIL_REGEXP, message: "cannot be an email" }
+    format: { without: URI::MailTo::EMAIL_REGEXP, message: "cannot be an email" }
 
   validates :email,
     uniqueness: true,
-    length: { in: 3..255 }
+    length: { in: 3..255 },
     format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validates :password,
     length: { in: 6..255 },
     allow_nil: true
 
-  validates :session_token,
-    presence: true,
-    uniqueness: true
+  # validates :session_token,
+  #   presence: true,
+  #   uniqueness: true
 
   def self.find_by_credentials(credential, password)
-    if (URI::MailTo::EMAIL_REGEXP).match(credential)
+    # if (URI::MailTo::EMAIL_REGEXP).match(credential)
+    if credential.include?('@')
       user = User.find_by(email: credential)
     else
       user = User.find_by(username: credential)
     end
 
-    # if user && user.authenticate(password)
-    #   return user
-    # else
-    #   return false
-    # end
-
-    user && user.authenticate(password) ? user : false
+    return user if user && user.authenticate(password)
+    # user && user.authenticate(password) ? user : false
   end
 
-  def reset_session_token
+  def reset_session_token!
     self.session_token = generate_unique_session_token
     self.save!
     self.session_token

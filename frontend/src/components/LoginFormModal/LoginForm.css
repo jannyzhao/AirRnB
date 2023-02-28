@@ -1,0 +1,20 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 600px;
+    justify-content: space-between;
+}
+
+button {
+    background-image: -webkit-linear-gradient(left, rgb(230, 173, 173), rgb(165, 43, 92));
+    width: 100px;
+    font-size: medium;
+    
+}
+
+.login-username-email-container {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
