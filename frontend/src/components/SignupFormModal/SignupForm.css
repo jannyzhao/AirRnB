@@ -1,4 +1,4 @@
-.login-form-container {
+.signup-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.1);
 }
 
-#login-form-title{
+#signup-form-title {
     font-size: 35px;
     display: flex;
     align-items: center;
@@ -19,11 +19,13 @@
     border-bottom: 1px solid #f0f0f0;
     padding: 10px;
     font-weight: bold;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', bold;
 }
 
-.login-credential-container,
-.login-password-container {
+.signup-email-container,
+.signup-username-container,
+.signup-password-container,
+.signup-confirmpassword-container {
     font-size: 100px;
     display: flex;
     align-items: center;
@@ -35,8 +37,10 @@
     margin-bottom: 16px;
 }
 
-.login-credential-container input,
-.login-password-container input {
+.signup-email-container input,
+.signup-username-container input,
+.signup-password-container input,
+.signup-confirmpassword-container input {
     border: none;
     outline: none;
     flex: 1;
@@ -45,24 +49,24 @@
     font-size: 16px;
     color: #000000;
     background-color: transparent;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif, bold;
 }
 
-/* .login-password-container input {
+/* .signup-password-container input {
     margin-left: 8px;
 } */
 
 button[type="submit"] {
-  width: 100%;
-  height: 56px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  background-image: linear-gradient(to right, #ff5a5f, #ff1f4b);
-  cursor: pointer;
-  transition: background-image 0.2s ease-in-out;
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-image: linear-gradient(to right, #ff5a5f, #ff1f4b);
+    cursor: pointer;
+    transition: background-image 0.2s ease-in-out;
     font-family: 'Montserrat', sans-serif;
 }
 

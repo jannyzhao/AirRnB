@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
+import { NavLink } from 'react-router-dom';
 
-function LoginForm() {
+function LoginFormModal() {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
@@ -29,11 +30,12 @@ function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="login-container">
+            <div id='login-form-title'>Welcome to AirRnB</div>
+            <div className="login-form-container">
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
-            <div className="login-username-email-container">
+            <div className="login-credential-container">
                 <input
                     type="text"
                     value={credential}
@@ -42,8 +44,8 @@ function LoginForm() {
                     placeholder="Username or Email"
                 />
             </div>
-
-            <label>
+            
+            <div className="login-password-container">
                 <input
                     type="password"
                     value={password}
@@ -51,11 +53,19 @@ function LoginForm() {
                     required
                     placeholder="Password"
                 />
-            </label>
+            </div>
             <button type="submit">Log In</button>
+
+                <div className="signup-link">
+                    Don't have an account? {" "}
+                    <NavLink to="/signup" className="signup-link-text">
+                        Sign Up Here
+                    </NavLink>
+                </div>
+
             </div>
         </form>
     );
 }
 
-export default LoginForm;
+export default LoginFormModal;
