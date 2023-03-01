@@ -14,7 +14,7 @@
 
 .dropdown {
     position: relative;
-    /* display: inline-block; */
+    display: inline-block;
 }
 
 .searchBar {
@@ -36,6 +36,7 @@
 
 .dropdown-menu {
     position: absolute;
+    display: none;
     width: 200px;
     left: -70px;
     list-style: none;
@@ -48,6 +49,10 @@
 
 .dropdown-menu li {
     padding: 10px;
+}
+
+.dropdown-menu.is-active {
+    display: block;
 }
 
 .dropdown-menu li a {

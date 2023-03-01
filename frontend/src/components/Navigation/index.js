@@ -49,15 +49,15 @@ function Navigation() {
                 <ul
                     className={`dropdown-menu${isDropdownOpen ? ' is-active' : ''}`}
                     onClick={() => setIsDropdownOpen(false)}
-                >
+                    >
                         {/* <NavLink exact to='/'>
                             Home
                         </NavLink> */}
                     <li>
                     {sessionUser && <ProfileButton user={sessionUser} />}
                     { !sessionUser && <>
-                <LoginFormModal />
-                <NavLink to="/signup"></NavLink>
+                        <LoginFormModal />
+                        <NavLink to="/signup"></NavLink>
             </>
         }
                     </li>
