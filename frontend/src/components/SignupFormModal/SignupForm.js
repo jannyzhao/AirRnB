@@ -19,9 +19,6 @@ function SignupFormModal() {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            // console.log(email)
-            // console.log(username)
-            // console.log(password)
             return dispatch(sessionActions.signup({ email, username, password }))
                 .catch(async (res) => {
                     let data;
@@ -44,9 +41,9 @@ function SignupFormModal() {
             <div id="signup-form-title">Sign Up</div>
             <div className="signup-form-container">
 
-            <ul>
+            < div id="auth-errors">
                 {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
+            </div>
 
             <div className="signup-email-container">
                 <input

@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/session';
 import './Navigation.css';
 
 function Navigation() {
+    const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -24,35 +27,39 @@ function Navigation() {
             </>
         );
     }
+
+    const demoLogin = (e) => {
+        e.preventDefault();
+        return dispatch(login({ email: 'demo@user.io', password: 'password' }))
+    }
   
     return (
         <nav className='navBar'>
-            <NavLink exact to='/'>Home</NavLink>
-
+            <NavLink exact to='/'></NavLink>
             <div className='dropdown'>
-                <button
-                    className='dropdown-trigger'
+                <button className='dropdown-trigger'
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                >
-                    Menu
+                >Menu
                 </button>
+
+                {/* <div className="searchBar">
+                    <input type="text" placeholder="Search..." />
+                </div> */}
 
                 <ul
                     className={`dropdown-menu${isDropdownOpen ? ' is-active' : ''}`}
                     onClick={() => setIsDropdownOpen(false)}
                 >
-                    <li>
-                        <NavLink exact to='/'>
+                        {/* <NavLink exact to='/'>
                             Home
-                        </NavLink>
-                    </li>
+                        </NavLink> */}
                     <li>
-                        {sessionUser && <ProfileButton user={sessionUser} />}
-                        { !sessionUser && <>
-                                <LoginFormModal />
-                                <NavLink to="/signup"></NavLink>
-                            </>
-                        }
+                    {sessionUser && <ProfileButton user={sessionUser} />}
+                    { !sessionUser && <>
+                <LoginFormModal />
+                <NavLink to="/signup"></NavLink>
+            </>
+        }
                     </li>
                     <li>
                         <SignupFormModal />

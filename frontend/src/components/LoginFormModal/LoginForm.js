@@ -32,9 +32,9 @@ export default function LoginFormModal({setLoginModal, setSignupModal}) {
         <form onSubmit={handleSubmit}>
             <div id='login-form-title'>Welcome to AirRnB</div>
             <div className="login-form-container">
-            <ul>
+            <div id="auth-errors">
                 {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
+            </div>
             <div className="login-credential-container">
                 <input
                     type="text"
