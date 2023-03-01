@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import "./LoginForm.css";
 import { NavLink } from 'react-router-dom';
 
-function LoginFormModal() {
+export default function LoginFormModal({setLoginModal, setSignupModal}) {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
@@ -67,5 +67,3 @@ function LoginFormModal() {
         </form>
     );
 }
-
-export default LoginFormModal;

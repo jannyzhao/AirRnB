@@ -24,7 +24,7 @@ function Navigation() {
             </>
         );
     }
-
+  
     return (
         <nav className='navBar'>
             <NavLink exact to='/'>Home</NavLink>
@@ -46,7 +46,14 @@ function Navigation() {
                             Home
                         </NavLink>
                     </li>
-                    <li>{sessionLinks}</li>
+                    <li>
+                        {sessionUser && <ProfileButton user={sessionUser} />}
+                        { !sessionUser && <>
+                                <LoginFormModal />
+                                <NavLink to="/signup"></NavLink>
+                            </>
+                        }
+                    </li>
                     <li>
                         <SignupFormModal />
                     </li>

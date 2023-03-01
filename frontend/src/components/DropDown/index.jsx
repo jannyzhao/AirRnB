@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupForm from "../SignupModal/SignupForm";
 import { Modal } from "../../context/Modal";
-import "./Modal.css";
-// import ScavengerHunt from "../ScavengerHunt";
+import "./dropdown.css";
 
-export default function DropdownModal() {
+function DropdownModal() {
+    
     const [showDropdownModal, setShowDropdownModal] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
@@ -85,3 +85,5 @@ export default function DropdownModal() {
         </>
     );
 }
+
+export default DropdownModal
