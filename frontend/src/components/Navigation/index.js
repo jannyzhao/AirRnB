@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -7,7 +7,9 @@ import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 function Navigation() {
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector((state) => state.session.user);
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     let sessionLinks;
     if (sessionUser) {
@@ -24,11 +26,33 @@ function Navigation() {
     }
 
     return (
-        <div className='navBar'>
-            <NavLink exact to="/">Home</NavLink>
-            <div>{sessionLinks}</div>
-            <SignupFormModal />
-        </div>
+        <nav className='navBar'>
+            <NavLink exact to='/'>Home</NavLink>
+
+            <div className='dropdown'>
+                <button
+                    className='dropdown-trigger'
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                    Menu
+                </button>
+
+                <ul
+                    className={`dropdown-menu${isDropdownOpen ? ' is-active' : ''}`}
+                    onClick={() => setIsDropdownOpen(false)}
+                >
+                    <li>
+                        <NavLink exact to='/'>
+                            Home
+                        </NavLink>
+                    </li>
+                    <li>{sessionLinks}</li>
+                    <li>
+                        <SignupFormModal />
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
 }
 

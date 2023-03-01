@@ -58,7 +58,7 @@ function LoginFormModal() {
 
                 <div className="signup-link">
                     Don't have an account? {" "}
-                    <NavLink to="/signup" className="signup-link-text">
+                    <NavLink exact to="/signup" className="signup-link-text">
                         Sign Up Here
                     </NavLink>
                 </div>

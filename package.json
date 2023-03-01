@@ -1,0 +1,26 @@
+{
+  "name": "airrnb",
+  "version": "1.0.0",
+  "description": "Clone of AirBnB",
+  "main": "index.js",
+  "engines": {
+    "node": "16.18.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jannyzhao/AirRnB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jannyzhao/AirRnB/issues"
+  },
+  "homepage": "https://github.com/jannyzhao/AirRnB#readme"
+}
