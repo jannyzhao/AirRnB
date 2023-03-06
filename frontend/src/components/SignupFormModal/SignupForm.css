@@ -1,61 +1,61 @@
 .signup-form-container {
-    flex-direction: column;
-    height: 400px;
-    width: 400px;
-    border: 1px solid #ebebeb;
-    border-radius: 8px;
-    padding: 24px;
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  height: 400px;
+  width: 400px;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.1);
 }
 
 #signup-form-title {
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #f0f0f0;
-    padding: 15px;
-    font-family: 'Montserrat', bold;
+  font-size: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px;
+  font-family: "Montserrat", bold;
 }
 
 .signup-email-container,
 .signup-username-container,
 .signup-password-container,
 .signup-confirmpassword-container {
-    display: flex;
-    height: 65px;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    margin-bottom: 15px;
+  display: flex;
+  height: 65px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  margin-bottom: 15px;
 }
 
 .signup-email-container input,
 .signup-username-container input,
 .signup-password-container input,
 .signup-confirmpassword-container input {
-    border: none;
-    flex: 10;
-    padding: 0 15px;
-    font-size: 20px;
-    color: #000000;
-    background-color: transparent;
-    font-family: 'Montserrat', sans-serif, bold;
+  border: none;
+  flex: 10;
+  padding: 0 15px;
+  font-size: 20px;
+  color: #000000;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif, bold;
 }
 
 button[type="submit"] {
-    height: 56px;
-    border: none;
-    border-radius: 10px;
-    font-size: 22px;
-    background-image: linear-gradient(to right, #ff5a5f, #ff1f4b);
-    font-family: 'Montserrat', sans-serif;
+  height: 56px;
+  border: none;
+  border-radius: 10px;
+  font-size: 22px;
+  background-image: linear-gradient(to right, #ff5a5f, #ff1f4b);
+  font-family: "Montserrat", sans-serif;
 }
 
 button[type="submit"]:hover {
-    background-image: linear-gradient(to right, #ff1f4b, #ff5a5f);
+  background-image: linear-gradient(to right, #ff1f4b, #ff5a5f);
 }
 
 #auth-errors {
-    font-family: 'Montserrat', bold;
-    padding-bottom: 20px;
+  font-family: "Montserrat", bold;
+  padding-bottom: 20px;
 }

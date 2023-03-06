@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -35,9 +34,9 @@ const renderApplication = () => {
     <React.StrictMode>
       <Root />
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById("root")
   );
-}
+};
 
 if (
   sessionStorage.getItem("currentUser") === null ||

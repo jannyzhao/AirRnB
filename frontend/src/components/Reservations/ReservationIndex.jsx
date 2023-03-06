@@ -5,18 +5,25 @@ import ReservationIndexItem from "./ReservationIndexItem";
 import "./ReservationIndex.css";
 
 const ReservationIndex = () => {
-    const dispatch = useDispatch();
-    const reservations = useSelector(getReservations);
- 
-    useEffect(() => {
-        dispatch(fetchReservations())
-    }, [dispatch]);
+  const dispatch = useDispatch();
+  const reservations = useSelector(getReservations);
 
-    return (
-        <>
-        <ul className="reservations">{reservations.map((reservation) => <ReservationIndexItem reservation={reservation} key={reservation.id} />)}</ul>
-        </>
-    )
-}
+  useEffect(() => {
+    dispatch(fetchReservations());
+  }, [dispatch]);
+
+  return (
+    <>
+      <ul className="reservations">
+        {reservations.map((reservation) => (
+          <ReservationIndexItem
+            reservation={reservation}
+            key={reservation.id}
+          />
+        ))}
+      </ul>
+    </>
+  );
+};
 
 export default ReservationIndex;
