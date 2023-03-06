@@ -13,13 +13,11 @@ const ListingIndex = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <ul className="listings">
-        {listings.map((listing) => (
-          <ListingIndexItem listing={listing} key={listing.id} />
-        ))}
-      </ul>
-    </>
+    <ul className="listings">
+      {listings.map((listing) => (
+        <ListingIndexItem listing={listing} key={listing.id} />
+      ))}
+    </ul>
   );
 };
 

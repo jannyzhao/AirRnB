@@ -1,3 +1,33 @@
 .listingshow {
+  font-family: "Montserrat", bold;
+  /* display: flex; */
+  /* flex-direction: column; */
+  justify-content: center;
+  padding: 20px;
+}
+
+.listingshow p {
   list-style: none;
+  width: 300px;
+  padding: 10px 0px 0px 10px;
+  font-size: 14px;
+  margin-top: 0;
+
+}
+
+.listingshow h1 {
+  font-size: 20px;
+  margin-top: 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.listingshow img {
+  max-width: 100%;
+  /* height: auto; */
+  border-radius: 0px;
+}
+
+.editbutton {
+    font-size: 15px;
 }

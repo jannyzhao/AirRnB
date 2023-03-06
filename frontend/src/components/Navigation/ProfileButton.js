@@ -29,6 +29,8 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
+
+
   return (
     <>
       <ul className="profile-dropdown">

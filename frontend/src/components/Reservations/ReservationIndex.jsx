@@ -13,16 +13,11 @@ const ReservationIndex = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <ul className="reservations">
-        {reservations.map((reservation) => (
-          <ReservationIndexItem
-            reservation={reservation}
-            key={reservation.id}
-          />
-        ))}
-      </ul>
-    </>
+    <ul className="reservations">
+      {reservations.map((reservation) => (
+        <ReservationIndexItem reservation={reservation} key={reservation.id} />
+      ))}
+    </ul>
   );
 };
 

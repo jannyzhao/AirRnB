@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getListing, fetchListing } from "../../store/listings";
 import "./ListingShow.css";
+import placeholder1Img from "./sfhouse.png";
+
 
 export default function ListingShow() {
+  const sfhouseImg = placeholder1Img;
   const dispatch = useDispatch();
   const { listingId } = useParams();
   const listing = useSelector(getListing(listingId));
@@ -19,9 +22,15 @@ export default function ListingShow() {
     <>
       {listing && (
         <ul className="listingshow">
+          <div>
+            <img src={sfhouseImg} alt="placeholder1" className="img" />
+          </div>
           <h1>{listing.title}</h1>
-          <p>{listing.body}</p>
+          <p>{listing.description}</p>
           <p>{listing.city}</p>
+          <br></br>
+          {/* <button className="editButton">Edit Reservation</button>
+          <button>Cancel Reservation</button> */}
         </ul>
       )}
     </>

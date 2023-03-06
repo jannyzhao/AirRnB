@@ -7,6 +7,7 @@ import SignupFormModal from "../SignupFormModal";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import "./Navigation.css";
+import { SearchIcon } from "@heroicons/react/solid";
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -34,6 +35,19 @@ function Navigation() {
   return (
     <nav className="navBar">
       <NavLink exact to="/"></NavLink>
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Plan your stay"
+          className="search-input"
+        />
+        {/* <input type="text" placeholder="Check-in" class="date-input" />
+        <input type="text" placeholder="Check-out" class="date-input" /> */}
+        <button className="search-btn">Search</button>
+        {/* <div className="flex items-center boarder-2 rounded-full">
+          <SearchIcon className="h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer" />
+        </div> */}
+      </div>
       <div className="dropdown">
         <button
           className="dropdown-trigger"
@@ -41,10 +55,6 @@ function Navigation() {
         >
           Menu
         </button>
-
-        {/* <div className="searchBar">
-                    <input type="text" placeholder="Search..." />
-                </div> */}
 
         <ul
           className={`dropdown-menu${isDropdownOpen ? " is-active" : ""}`}
@@ -67,6 +77,7 @@ function Navigation() {
               <SignupFormModal />
             </li>
           )}
+          <li>Demo Login</li>
         </ul>
       </div>
     </nav>
