@@ -22,4 +22,7 @@
     position: absolute;
     background-color: white;
     border-radius: 30px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
 }

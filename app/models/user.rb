@@ -31,6 +31,16 @@ class User < ApplicationRecord
     length: { in: 6..255 },
     allow_nil: true
 
+  has_many :listings,
+    foreign_key: :owner_id,
+    class_name: :Listing,
+    dependent: :destroy
+
+  has_many :reservations,
+    foreign_key: :guest_id,
+    class_name: :Reservation,
+    dependent: :destroy
+
   # validates :session_token,
   #   presence: true,
   #   uniqueness: true

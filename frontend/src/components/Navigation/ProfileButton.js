@@ -32,9 +32,9 @@ function ProfileButton({ user }) {
     return (
         <>
             <ul className="profile-dropdown">
-                {user.username}
-                {user.email}
-                <button onClick={logout}>Log Out</button>
+               <li> {user.username}</li>
+                <li>{user.email}</li>
+                <button onClick={logout}>Sign Out</button>
             </ul>
         </>
     );
