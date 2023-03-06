@@ -55,15 +55,18 @@ function Navigation() {
                         </NavLink> */}
                     <li>
                     {sessionUser && <ProfileButton user={sessionUser} />}
-                    { !sessionUser && <>
+                    { !sessionUser && (
+                        <>
                         <LoginFormModal />
                         <NavLink to="/signup"></NavLink>
-            </>
-        }
+                        </>
+                    )}
                     </li>
+                    {!sessionUser && (
                     <li>
                         <SignupFormModal />
                     </li>
+                    )}
                 </ul>
             </div>
         </nav>
