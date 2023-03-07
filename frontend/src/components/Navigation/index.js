@@ -34,10 +34,21 @@ function Navigation() {
 
   return (
     <nav className="navBar">
-      <NavLink exact to="/"></NavLink>
+      <NavLink
+        exact
+        to="/"
+        style={{
+          fontSize: "16px",
+          textDecoration: "none",
+          fontFamily: "Montserrat",
+        }}
+      >
+        Home
+      </NavLink>
+
       <div className="search-bar">
         <input
-          type="text"
+          type="search"
           placeholder="Plan your stay"
           className="search-input"
         />
@@ -60,9 +71,6 @@ function Navigation() {
           className={`dropdown-menu${isDropdownOpen ? " is-active" : ""}`}
           onClick={() => setIsDropdownOpen(false)}
         >
-          {/* <NavLink exact to='/'>
-                            Home
-                        </NavLink> */}
           <li>
             {sessionUser && <ProfileButton user={sessionUser} />}
             {!sessionUser && (
@@ -77,7 +85,7 @@ function Navigation() {
               <SignupFormModal />
             </li>
           )}
-          <li>Demo Login</li>
+          {/* <li>Demo Login</li> */}
         </ul>
       </div>
     </nav>

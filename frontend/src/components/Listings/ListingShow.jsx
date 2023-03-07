@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getListing, fetchListing } from "../../store/listings";
 import "./ListingShow.css";
 import placeholder1Img from "./sfhouse.png";
-
+import ReservationForm from "../Reservations/ReservationForm";
 
 export default function ListingShow() {
   const sfhouseImg = placeholder1Img;
@@ -12,12 +12,26 @@ export default function ListingShow() {
   const { listingId } = useParams();
   const listing = useSelector(getListing(listingId));
 
+  const [showReservation, setShowReservation] = useState(false);
+
   useEffect(() => {
     dispatch(fetchListing(listingId));
   }, [dispatch, listingId]);
+  
+  const handleReservation = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowReservation(true);
+  };
 
-  console.log(listingId);
+  const handleReservationClose = () => {
+    setShowReservation(false);
+  };
+
+
   console.log(listing);
+  console.log(listingId);
+
   return (
     <>
       {listing && (
@@ -28,11 +42,10 @@ export default function ListingShow() {
           <h1>{listing.title}</h1>
           <p>{listing.description}</p>
           <p>{listing.city}</p>
-          <br></br>
-          {/* <button className="editButton">Edit Reservation</button>
-          <button>Cancel Reservation</button> */}
+          <button onClick={handleReservation}>Make a Reservation</button>
         </ul>
       )}
+      {showReservation && <ReservationForm onClose={handleReservationClose} />}
     </>
   );
 }

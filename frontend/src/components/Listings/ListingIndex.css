@@ -25,3 +25,7 @@
   object-fit: cover;
   border-radius: 20px;
 }
+
+ul {
+  padding: 0px 20px
+}

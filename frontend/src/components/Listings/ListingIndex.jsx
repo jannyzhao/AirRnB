@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ListingIndexItem from "./ListingIndexItem";
 import { fetchListings, getListings } from "../../store/listings";
+import ListingIndexItem from "./ListingIndexItem";
 import "./ListingIndex.css";
 
 const ListingIndex = () => {

@@ -3,10 +3,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    puts "hellooooo"
-    # puts @user.username
-    puts user_params
-
+    
     if @user && @user.save
       login!(@user)
       render :show

@@ -1,5 +1,6 @@
 .navBar {
   display: flex;
+  position: relative;
   justify-content: space-between;
   padding: 15px 20px;
   background-color: #f8f9fa;
@@ -19,6 +20,7 @@
 
 .search-bar {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
@@ -31,6 +33,9 @@
   border: none;
   font-size: 16px;
   padding: 10px;
+  border-radius: 30px;
+  margin-left: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .date-input {
@@ -57,7 +62,7 @@
   font-size: 20px;
   font-weight: 400;
   text-transform: uppercase;
-  padding: 12px 45px;
+  padding: 10px 30px;
   border-radius: 999px;
   border: 2px solid #9b9b9b;
   transition: all 0.2s;
@@ -99,6 +104,7 @@ button {
   border-bottom: 1px solid #f0f0f0;
   background-color: transparent;
   font-size: 20px;
+  padding: 10px 0px 10px 0px;
   /* text-transform: uppercase; */
   font-family: "Montserrat", sans-serif;
 }
@@ -110,10 +116,15 @@ button:hover {
 .profile-dropdown {
   border: none;
   font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .profile-dropdown li {
   list-style: none;
   padding: 1px 6px 10px 5px;
+}
+
+.resLink a {
+  font-size: 16px;
+  text-decoration-line: none;
 }

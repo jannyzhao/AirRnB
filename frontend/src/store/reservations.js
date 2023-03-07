@@ -51,7 +51,7 @@ export const fetchReservation = (reservationId) => async (dispatch) => {
 };
 
 export const createReservation = (reservation) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reservations`, {
+  const response = await csrfFetch('/api/reservations', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export const createReservation = (reservation) => async (dispatch) => {
 
   if (response.ok) {
     const reservation = await response.json();
-    dispatch(receive_reservation(reservation));
+    dispatch(receiveReservation(reservation));
   }
 };
 
@@ -73,10 +73,10 @@ export const updateReservation = (reservation) => async (dispatch) => {
     },
     body: JSON.stringify(reservation),
   });
-
+ 
   if (response.ok) {
     const reservation = await response.json();
-    dispatch(receive_reservation(reservation));
+    dispatch(receiveReservation(reservation));
   }
 };
 
@@ -86,7 +86,7 @@ export const deleteReservation = (reservationId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    dispatch(remove_reservation(reservationId));
+    dispatch(removeReservation(reservationId));
   }
 };
 
