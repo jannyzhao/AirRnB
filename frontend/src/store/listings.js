@@ -18,11 +18,13 @@ const receiveListing = (listing) => {
   };
 };
 
-export const getListings = (state) =>
-  state.listings ? Object.values(state.listings) : [];
+export const getListings = (state) => {
+  return state.listings ? Object.values(state.listings) : [];
+};
 
-export const getListing = (listingId) => (state) =>
-  state.listings ? state.listings[listingId] : null;
+export const getListing = (listingId) => (state) => {
+  return state.listings ? state.listings[listingId] : null;
+};
 
 export const fetchListings = () => async (dispatch) => {
   const response = await csrfFetch("/api/listings");
@@ -31,7 +33,7 @@ export const fetchListings = () => async (dispatch) => {
     const listings = await response.json();
     dispatch(receiveListings(listings));
   }
-}; 
+};
 
 export const fetchListing = (listingId) => async (dispatch) => {
   const response = await csrfFetch(`/api/listings/${listingId}`);
@@ -48,7 +50,7 @@ const listingsReducer = (state = {}, action) => {
       return action.listings;
     case RECEIVE_LISTING:
       const newState = { ...state };
-      const listing = action.listing;
+      const listing = action.listing.listing;
       newState[listing.id] = listing;
       return newState;
     default:

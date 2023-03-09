@@ -1,5 +1,6 @@
 json.listing do
     json.extract! @listing, 
+        :id,
         :owner_id, 
         :title, 
         :description, 

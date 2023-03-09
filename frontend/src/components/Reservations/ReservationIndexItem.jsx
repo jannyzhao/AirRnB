@@ -15,7 +15,16 @@ export default function ReservationIndexItem({ reservation }) {
     dispatch(fetchListing(listingId));
   }, [dispatch, listingId]);
 
-  console.log("Fetching listing", listingId);
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteReservation(reservation.id));
+    console.log(reservation.id)
+  }
+
+  // console.log("ListingId", listingId)
+  // console.log("Reservation", reservation)
+  // console.log("Listing", listing)
 
   return (
     <>
@@ -30,9 +39,9 @@ export default function ReservationIndexItem({ reservation }) {
         </div>
       )}
       <button>
-        <Link to={`/listings/${listingId}`}>Edit Listing</Link>
+        <Link to={`/listings/${listingId}`}>Edit Reservation</Link>
       </button>
-      <button onClick={() => dispatch(deleteReservation(reservation.id))}>
+      <button onClick={handleDelete}>
         Cancel Reservation
       </button>
     </>

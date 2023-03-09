@@ -7,7 +7,6 @@ import SignupFormModal from "../SignupFormModal";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import "./Navigation.css";
-import { SearchIcon } from "@heroicons/react/solid";
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -22,14 +21,20 @@ function Navigation() {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup"></NavLink>
+        {/* <NavLink to="/signup"></NavLink> */}
       </>
     );
   }
 
   const demoLogin = (e) => {
     e.preventDefault();
-    return dispatch(login({ email: "demo@user.io", password: "password" }));
+    return dispatch(
+      login({
+        username: "Demo-lition",
+        email: "demo@user.io",
+        password: "password",
+      })
+    );
   };
 
   return (
@@ -46,6 +51,7 @@ function Navigation() {
         Home
       </NavLink>
 
+      {/* Search bar */}
       <div className="search-bar">
         <input
           type="search"
@@ -76,7 +82,7 @@ function Navigation() {
             {!sessionUser && (
               <>
                 <LoginFormModal />
-                <NavLink to="/signup"></NavLink>
+                {/* <NavLink to="/signup"></NavLink> */}
               </>
             )}
           </li>
@@ -86,6 +92,11 @@ function Navigation() {
             </li>
           )}
           {/* <li>Demo Login</li> */}
+
+          {!sessionUser && (
+            <button onClick={demoLogin}> Demo Login
+            </button>
+          )}
         </ul>
       </div>
     </nav>

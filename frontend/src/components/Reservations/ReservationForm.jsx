@@ -11,7 +11,8 @@ import {
 } from "../../store/reservations";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
-import "react-dates/lib/css/_datepicker.css";
+// import "react-dates/lib/css/_datepicker.css";
+import "./DateRangePicker.css"
 import "./ReservationForm.css";
 import { useHistory } from "react-router-dom";
 
@@ -68,7 +69,6 @@ export default function ReservationForm({ onClose }) {
         // alert("Reservation created successfully!");
         setDates({ startDate: null, endDate: null });
         setNumGuests(1);
-        onClose();
         history.push("/reservations");
 
       })
@@ -94,12 +94,12 @@ export default function ReservationForm({ onClose }) {
             onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
             numberOfMonths={1}
             daySize={32}
-            hideKeyboardShortcutsPanel={true}
+            // hideKeyboardShortcutsPanel={true}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="numGuests">Guests</label>
+          <label htmlFor="numGuests">GUESTS</label>
           <div className="input-group">
             <button className="btn" onClick={handleSubtract}>
               -
@@ -120,9 +120,9 @@ export default function ReservationForm({ onClose }) {
           <button type="submit" className="btn">
             Reserve
           </button>
-          <button className="btn" onClick={onClose}>
+          {/* <button className="btn" onClick={onClose}>
             Cancel
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

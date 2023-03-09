@@ -10,6 +10,7 @@ const ListingIndex = () => {
 
   useEffect(() => {
     dispatch(fetchListings());
+    
   }, [dispatch]);
 
   return (

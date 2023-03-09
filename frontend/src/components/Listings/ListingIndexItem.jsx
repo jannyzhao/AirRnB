@@ -8,7 +8,7 @@ import placeholder1Img from "./sfhouse.png";
 
 export default function ListingIndexItem({ listing }) {
   const sfhouseImg = placeholder1Img;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function ListingIndexItem({ listing }) {
           <img src={sfhouseImg} alt="placeholder1" className="img" />
         </div>
 
-        <ul>
+        <ul> 
           <li>
             {listing.city}, {listing.state}
           </li>

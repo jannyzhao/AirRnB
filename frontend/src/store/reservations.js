@@ -51,7 +51,7 @@ export const fetchReservation = (reservationId) => async (dispatch) => {
 };
 
 export const createReservation = (reservation) => async (dispatch) => {
-  const response = await csrfFetch('/api/reservations', {
+  const response = await csrfFetch("/api/reservations", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export const updateReservation = (reservation) => async (dispatch) => {
     },
     body: JSON.stringify(reservation),
   });
- 
+
   if (response.ok) {
     const reservation = await response.json();
     dispatch(receiveReservation(reservation));
@@ -91,13 +91,16 @@ export const deleteReservation = (reservationId) => async (dispatch) => {
 };
 
 const reservationsReducer = (state = {}, action) => {
+  const newState = { ...state };
   switch (action.type) {
     case RECEIVE_RESERVATIONS:
       return action.reservations;
     case RECEIVE_RESERVATION:
-      const newState = { ...state };
       const reservation = action.reservation;
       newState[reservation.id] = reservation;
+      return newState;
+    case REMOVE_RESERVATION:
+      delete newState[action.reservationId];
       return newState;
     default:
       return state;

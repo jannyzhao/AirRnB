@@ -4,20 +4,22 @@ import { fetchReservations, getReservations } from "../../store/reservations";
 import ReservationIndexItem from "./ReservationIndexItem";
 import "./ReservationIndex.css";
 import ListingIndex from "../Listings/ListingIndex";
+import { fetchListings } from "../../store/listings";
 
 const ReservationIndex = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   let reservations = useSelector(getReservations);
-  let userReservations = reservations.filter(
+  let userReservations = reservations?.filter(
     (reservation) => reservation.guestId === sessionUser.id
   );
 
   useEffect(() => {
-    dispatch(fetchReservations());
+    dispatch(fetchListings()).then(
+      dispatch(fetchReservations())
+    )
   }, [dispatch]);
-
 
   if (sessionUser) {
     return (

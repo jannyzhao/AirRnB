@@ -5,6 +5,7 @@ import { getListing, fetchListing } from "../../store/listings";
 import "./ListingShow.css";
 import placeholder1Img from "./sfhouse.png";
 import ReservationForm from "../Reservations/ReservationForm";
+import GoogleMaps from "../GoogleMaps/GoogleMaps";
 
 export default function ListingShow() {
   const sfhouseImg = placeholder1Img;
@@ -17,20 +18,12 @@ export default function ListingShow() {
   useEffect(() => {
     dispatch(fetchListing(listingId));
   }, [dispatch, listingId]);
-  
-  const handleReservation = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setShowReservation(true);
-  };
 
-  const handleReservationClose = () => {
-    setShowReservation(false);
-  };
-
-
-  console.log(listing);
-  console.log(listingId);
+  // const handleReservation = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setShowReservation(true);
+  // };
 
   return (
     <>
@@ -42,10 +35,10 @@ export default function ListingShow() {
           <h1>{listing.title}</h1>
           <p>{listing.description}</p>
           <p>{listing.city}</p>
-          <button onClick={handleReservation}>Make a Reservation</button>
+          <ReservationForm />
+          <GoogleMaps />
         </ul>
       )}
-      {showReservation && <ReservationForm onClose={handleReservationClose} />}
     </>
   );
 }
