@@ -1,8 +1,21 @@
 .link {
-      padding: 10px;
+  padding: 10px;
   background-color: #007bff;
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+.reservation-info {
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+}
+
+.title-header {
+  padding: 10px;
+}
+
+.bdhouse {
+  height: 400px;
 }

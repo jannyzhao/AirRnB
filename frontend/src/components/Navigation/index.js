@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -11,7 +11,8 @@ import "./Navigation.css";
 function Navigation() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const [searchInput, setSearchInput] = useState("");
+  const history = useHistory();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   let sessionLinks;
@@ -21,10 +22,14 @@ function Navigation() {
     sessionLinks = (
       <>
         <LoginFormModal />
-        {/* <NavLink to="/signup"></NavLink> */}
       </>
     );
   }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    history.push(`/?search=${searchInput.replaceAll(" ", "+")}`);
+  };
 
   const demoLogin = (e) => {
     e.preventDefault();
@@ -54,16 +59,13 @@ function Navigation() {
       {/* Search bar */}
       <div className="search-bar">
         <input
+          onChange={(e) => setSearchInput(e.target.value)}
           type="search"
           placeholder="Plan your stay"
+          value={searchInput}
           className="search-input"
         />
-        {/* <input type="text" placeholder="Check-in" class="date-input" />
-        <input type="text" placeholder="Check-out" class="date-input" /> */}
-        <button className="search-btn">Search</button>
-        {/* <div className="flex items-center boarder-2 rounded-full">
-          <SearchIcon className="h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer" />
-        </div> */}
+        <button onClick={handleSearch}>Search</button>
       </div>
       <div className="dropdown">
         <button
@@ -93,10 +95,7 @@ function Navigation() {
           )}
           {/* <li>Demo Login</li> */}
 
-          {!sessionUser && (
-            <button onClick={demoLogin}> Demo Login
-            </button>
-          )}
+          {!sessionUser && <button onClick={demoLogin}> Demo Login</button>}
         </ul>
       </div>
     </nav>

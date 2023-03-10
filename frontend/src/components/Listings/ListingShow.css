@@ -12,7 +12,6 @@
   padding: 10px 0px 0px 10px;
   font-size: 14px;
   margin-top: 0;
-
 }
 
 .listingshow h1 {
@@ -25,9 +24,25 @@
 .listingshow img {
   max-width: 100%;
   /* height: auto; */
+  width: 500px;
+  height: auto;
   border-radius: 0px;
 }
 
 .editbutton {
-    font-size: 15px;
+  font-size: 15px;
+}
+
+.maps-container {
+  justify-content: space-evenly;
+  padding: 100px 60px 40px 60px;
+  z-index: 3;
+  margin-top: auto;
+}
+
+.reservation-form-container {
+  padding: 50px;
+  z-index: 3;
+  margin-bottom: 80px;
+  position: sticky;
 }

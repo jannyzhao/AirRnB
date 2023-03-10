@@ -29,14 +29,20 @@ export default function ListingShow() {
     <>
       {listing && (
         <ul className="listingshow">
-          <div>
-            <img src={sfhouseImg} alt="placeholder1" className="img" />
-          </div>
           <h1>{listing.title}</h1>
+          <li>
+            {"Reviews Placeholder "} • {listing.city}, {listing.state}, United States
+          </li>
+          <img src={sfhouseImg} alt="placeholder1" className="img" />
+          <p>Entire home hosted by Janny</p>
           <p>{listing.description}</p>
-          <p>{listing.city}</p>
-          <ReservationForm />
-          <GoogleMaps />
+          <p>{listing.numBaths} guests</p>
+          <div className="reservation-form-container">
+            <ReservationForm />
+          </div>
+          <div className="maps-container">
+            <GoogleMaps />
+          </div>
         </ul>
       )}
     </>

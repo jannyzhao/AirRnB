@@ -11,5 +11,7 @@ json.listing do
         :num_guests, 
         :num_bedrooms, 
         :num_beds, 
-        :num_baths
+        :num_baths,
+        :longitude,
+        :latitude
 end

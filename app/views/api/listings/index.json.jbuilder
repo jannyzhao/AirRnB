@@ -12,6 +12,8 @@
             :num_guests, 
             :num_bedrooms, 
             :num_beds, 
-            :num_baths
+            :num_baths,
+            :latitude,
+            :longitude
     end
 end

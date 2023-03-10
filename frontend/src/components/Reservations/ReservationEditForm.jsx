@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getListing } from "../../store/listings";
 import {
   getReservation,
   fetchReservation,
-  createReservation,
   updateReservation,
   deleteReservation,
 } from "../../store/reservations";
@@ -14,19 +13,24 @@ import { DateRangePicker } from "react-dates";
 // import "react-dates/lib/css/_datepicker.css";
 import "./DateRangePicker.css";
 import "./ReservationForm.css";
-import { useHistory } from "react-router-dom";
 
-export default function ReservationForm({ onClose }) {
+export default function ReservationEditForm({ onClose }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { listingId } = useParams();
-  const listing = useSelector(getListing(listingId));
-  const [numGuests, setNumGuests] = useState(1);
+  const { reservationId } = useParams();
+  const {listingId } = useParams();
+  const reservation = useSelector(getReservation(reservationId));
+  const listing = useSelector(getListing(reservation.listingId));
+  const [numGuests, setNumGuests] = useState(reservation.numGuests);
   const [focusedInput, setFocusedInput] = useState(null);
   const [dates, setDates] = useState({
-    startDate: null,
-    endDate: null,
+    startDate: reservation.checkIn,
+    endDate: reservation.checkOut,
   });
+
+  useEffect(() => {
+    dispatch(fetchReservation(reservationId));
+  }, [dispatch, reservationId]);
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -54,7 +58,8 @@ export default function ReservationForm({ onClose }) {
       return;
     }
 
-    const listingData = {
+    const reservationData = {
+      id: reservation.id,
       listing_id: listing.id,
       guest_id: sessionUser.id,
       num_guests: numGuests,
@@ -62,18 +67,32 @@ export default function ReservationForm({ onClose }) {
       check_out: dates.endDate,
     };
 
-    console.log(listingData);
+    console.log(reservationData);
 
-    dispatch(createReservation(listingData))
+    dispatch(updateReservation(reservationData))
       .then(() => {
-        // alert("Reservation created successfully!");
+        // alert("Reservation updated successfully!");
         setDates({ startDate: null, endDate: null });
         setNumGuests(1);
         history.push("/reservations");
       })
       .catch((err) => {
-        alert(`Failed to create reservation: ${err.message}`);
+        alert(`Failed to update reservation: ${err.message}`);
       });
+  };
+
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to cancel this reservation?")) {
+      dispatch(deleteReservation(reservation.id))
+        .then(() => {
+          // alert("Reservation canceled successfully!");
+          onClose();
+          history.push("/reservations");
+        })
+        .catch((err) => {
+          alert(`Failed to cancel reservation: ${err.message}`);
+        });
+    }
   };
 
   return (
@@ -85,6 +104,7 @@ export default function ReservationForm({ onClose }) {
             startDate={dates.startDate}
             startDateId="checkin"
             endDate={dates.endDate}
+            // endDate={dates.endDate}
             endDateId="checkout"
             onDatesChange={({ startDate, endDate }) =>
               setDates({ startDate, endDate })
